@@ -20,10 +20,25 @@
 		55015D472ABCB1070048553F /* StateSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55015D3E2ABCB1070048553F /* StateSubscription.swift */; };
 		55015D482ABCB1070048553F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55015D3F2ABCB1070048553F /* State.swift */; };
 		55015D492ABCB1070048553F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55015D402ABCB1070048553F /* Store.swift */; };
+		5523E8B62ABCBBB3002F679D /* ListAllCoinViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523E8B22ABCBBB3002F679D /* ListAllCoinViewBuilder.swift */; };
+		5523E8B72ABCBBB3002F679D /* ListAllCoinViewStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523E8B32ABCBBB3002F679D /* ListAllCoinViewStates.swift */; };
+		5523E8B82ABCBBB3002F679D /* ListAllCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523E8B42ABCBBB3002F679D /* ListAllCoinViewController.swift */; };
+		5523E8B92ABCBBB3002F679D /* ListAllCoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5523E8B52ABCBBB3002F679D /* ListAllCoinViewModel.swift */; };
 		5543D2EF2ABCB27A002E3668 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2EB2ABCB27A002E3668 /* RequestError.swift */; };
 		5543D2F02ABCB27A002E3668 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2EC2ABCB27A002E3668 /* HttpClient.swift */; };
 		5543D2F12ABCB27A002E3668 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2ED2ABCB27A002E3668 /* Endpoint.swift */; };
 		5543D2F22ABCB27A002E3668 /* RequestMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2EE2ABCB27A002E3668 /* RequestMethods.swift */; };
+		5543D2F72ABCB498002E3668 /* ListAllMarketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2F62ABCB498002E3668 /* ListAllMarketInfo.swift */; };
+		5543D2F92ABCB4C5002E3668 /* GetASpecificMarketInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2F82ABCB4C5002E3668 /* GetASpecificMarketInfo.swift */; };
+		5543D2FB2ABCB502002E3668 /* ListAllTickersInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2FA2ABCB502002E3668 /* ListAllTickersInfo.swift */; };
+		5543D2FD2ABCB551002E3668 /* GetASpecificTickerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2FC2ABCB551002E3668 /* GetASpecificTickerInfo.swift */; };
+		5543D2FF2ABCB57F002E3668 /* MarketInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D2FE2ABCB57F002E3668 /* MarketInfoModel.swift */; };
+		5543D3032ABCB675002E3668 /* TickersInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D3022ABCB675002E3668 /* TickersInfoModel.swift */; };
+		5543D3072ABCBAB6002E3668 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D3062ABCBAB6002E3668 /* CoordinatorProtocol.swift */; };
+		5543D3092ABCBAC1002E3668 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D3082ABCBAC1002E3668 /* Coordinator.swift */; };
+		5543D30E2ABCBB04002E3668 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */; };
+		5543D30F2ABCBB04002E3668 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D30C2ABCBB04002E3668 /* Encodable+Extension.swift */; };
+		5543D3102ABCBB04002E3668 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +57,25 @@
 		55015D3E2ABCB1070048553F /* StateSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSubscription.swift; sourceTree = "<group>"; };
 		55015D3F2ABCB1070048553F /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		55015D402ABCB1070048553F /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		5523E8B22ABCBBB3002F679D /* ListAllCoinViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinViewBuilder.swift; sourceTree = "<group>"; };
+		5523E8B32ABCBBB3002F679D /* ListAllCoinViewStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinViewStates.swift; sourceTree = "<group>"; };
+		5523E8B42ABCBBB3002F679D /* ListAllCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinViewController.swift; sourceTree = "<group>"; };
+		5523E8B52ABCBBB3002F679D /* ListAllCoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinViewModel.swift; sourceTree = "<group>"; };
 		5543D2EB2ABCB27A002E3668 /* RequestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		5543D2EC2ABCB27A002E3668 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		5543D2ED2ABCB27A002E3668 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		5543D2EE2ABCB27A002E3668 /* RequestMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethods.swift; sourceTree = "<group>"; };
+		5543D2F62ABCB498002E3668 /* ListAllMarketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllMarketInfo.swift; sourceTree = "<group>"; };
+		5543D2F82ABCB4C5002E3668 /* GetASpecificMarketInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetASpecificMarketInfo.swift; sourceTree = "<group>"; };
+		5543D2FA2ABCB502002E3668 /* ListAllTickersInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllTickersInfo.swift; sourceTree = "<group>"; };
+		5543D2FC2ABCB551002E3668 /* GetASpecificTickerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetASpecificTickerInfo.swift; sourceTree = "<group>"; };
+		5543D2FE2ABCB57F002E3668 /* MarketInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketInfoModel.swift; sourceTree = "<group>"; };
+		5543D3022ABCB675002E3668 /* TickersInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickersInfoModel.swift; sourceTree = "<group>"; };
+		5543D3062ABCBAB6002E3668 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		5543D3082ABCBAC1002E3668 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		5543D30C2ABCBB04002E3668 /* Encodable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +108,13 @@
 		55015D1E2ABCB02F0048553F /* CryptoChu */ = {
 			isa = PBXGroup;
 			children = (
+				5543D3122ABCBB78002E3668 /* Views */,
+				5543D3112ABCBB73002E3668 /* Screens */,
+				5543D3052ABCBA98002E3668 /* Coordinator */,
 				55015D4A2ABCB1210048553F /* Service */,
 				55015D342ABCB0D50048553F /* Core */,
 				55015D332ABCB0C90048553F /* App */,
+				5543D30A2ABCBAEC002E3668 /* Extensions */,
 				55015D282ABCB0300048553F /* Assets.xcassets */,
 				55015D2D2ABCB0300048553F /* Info.plist */,
 			);
@@ -124,9 +158,23 @@
 		55015D4A2ABCB1210048553F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5543D3042ABCB7D4002E3668 /* Serviceables */,
+				5543D2F52ABCB424002E3668 /* Endpoins */,
+				5543D2F32ABCB404002E3668 /* Models */,
 				5543D2EA2ABCB25F002E3668 /* Network */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		5523E8B12ABCBB9D002F679D /* ListAllCoin */ = {
+			isa = PBXGroup;
+			children = (
+				5523E8B22ABCBBB3002F679D /* ListAllCoinViewBuilder.swift */,
+				5523E8B32ABCBBB3002F679D /* ListAllCoinViewStates.swift */,
+				5523E8B42ABCBBB3002F679D /* ListAllCoinViewController.swift */,
+				5523E8B52ABCBBB3002F679D /* ListAllCoinViewModel.swift */,
+			);
+			path = ListAllCoin;
 			sourceTree = "<group>";
 		};
 		5543D2EA2ABCB25F002E3668 /* Network */ = {
@@ -138,6 +186,75 @@
 				5543D2EE2ABCB27A002E3668 /* RequestMethods.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		5543D2F32ABCB404002E3668 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5543D2F42ABCB408002E3668 /* Response */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5543D2F42ABCB408002E3668 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				5543D2FE2ABCB57F002E3668 /* MarketInfoModel.swift */,
+				5543D3022ABCB675002E3668 /* TickersInfoModel.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		5543D2F52ABCB424002E3668 /* Endpoins */ = {
+			isa = PBXGroup;
+			children = (
+				5543D2F62ABCB498002E3668 /* ListAllMarketInfo.swift */,
+				5543D2F82ABCB4C5002E3668 /* GetASpecificMarketInfo.swift */,
+				5543D2FA2ABCB502002E3668 /* ListAllTickersInfo.swift */,
+				5543D2FC2ABCB551002E3668 /* GetASpecificTickerInfo.swift */,
+			);
+			path = Endpoins;
+			sourceTree = "<group>";
+		};
+		5543D3042ABCB7D4002E3668 /* Serviceables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Serviceables;
+			sourceTree = "<group>";
+		};
+		5543D3052ABCBA98002E3668 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5543D3062ABCBAB6002E3668 /* CoordinatorProtocol.swift */,
+				5543D3082ABCBAC1002E3668 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		5543D30A2ABCBAEC002E3668 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5543D30C2ABCBB04002E3668 /* Encodable+Extension.swift */,
+				5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */,
+				5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5543D3112ABCBB73002E3668 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5523E8B12ABCBB9D002F679D /* ListAllCoin */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5543D3122ABCBB78002E3668 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,20 +328,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				5543D2F12ABCB27A002E3668 /* Endpoint.swift in Sources */,
+				5523E8B62ABCBBB3002F679D /* ListAllCoinViewBuilder.swift in Sources */,
 				55015D472ABCB1070048553F /* StateSubscription.swift in Sources */,
+				5543D2F92ABCB4C5002E3668 /* GetASpecificMarketInfo.swift in Sources */,
 				55015D442ABCB1070048553F /* GenericViewState.swift in Sources */,
+				5543D2FD2ABCB551002E3668 /* GetASpecificTickerInfo.swift in Sources */,
 				55015D202ABCB02F0048553F /* AppDelegate.swift in Sources */,
+				5543D3072ABCBAB6002E3668 /* CoordinatorProtocol.swift in Sources */,
 				55015D482ABCB1070048553F /* State.swift in Sources */,
 				55015D412ABCB1070048553F /* StatefulView.swift in Sources */,
 				55015D422ABCB1070048553F /* CustomLogDescriptionConvertible.swift in Sources */,
+				5543D2F72ABCB498002E3668 /* ListAllMarketInfo.swift in Sources */,
 				55015D492ABCB1070048553F /* Store.swift in Sources */,
 				5543D2F02ABCB27A002E3668 /* HttpClient.swift in Sources */,
+				5543D2FF2ABCB57F002E3668 /* MarketInfoModel.swift in Sources */,
+				5523E8B82ABCBBB3002F679D /* ListAllCoinViewController.swift in Sources */,
+				5543D3102ABCBB04002E3668 /* UIViewController+Extension.swift in Sources */,
 				55015D222ABCB02F0048553F /* SceneDelegate.swift in Sources */,
+				5543D3032ABCB675002E3668 /* TickersInfoModel.swift in Sources */,
 				5543D2F22ABCB27A002E3668 /* RequestMethods.swift in Sources */,
+				5523E8B72ABCBBB3002F679D /* ListAllCoinViewStates.swift in Sources */,
+				5523E8B92ABCBBB3002F679D /* ListAllCoinViewModel.swift in Sources */,
+				5543D3092ABCBAC1002E3668 /* Coordinator.swift in Sources */,
+				5543D30F2ABCBB04002E3668 /* Encodable+Extension.swift in Sources */,
+				5543D30E2ABCBB04002E3668 /* UIView+Extension.swift in Sources */,
 				5543D2EF2ABCB27A002E3668 /* RequestError.swift in Sources */,
 				55015D432ABCB1070048553F /* GenericState.swift in Sources */,
 				55015D462ABCB1070048553F /* ViewModel.swift in Sources */,
 				55015D452ABCB1070048553F /* CustomOperators.swift in Sources */,
+				5543D2FB2ABCB502002E3668 /* ListAllTickersInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +499,6 @@
 				INFOPLIST_FILE = CryptoChu/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -397,7 +528,6 @@
 				INFOPLIST_FILE = CryptoChu/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

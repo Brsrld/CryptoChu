@@ -14,8 +14,3 @@ enum RequestMethod: String {
     case post = "POST"
     case put = "PUT"
 }
-
-enum DataType {
-    case image
-    case json
-}

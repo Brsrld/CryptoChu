@@ -19,11 +19,11 @@ enum RequestError: Error {
     var customMessage: String {
         switch self {
         case .decode:
-            return "Decode error"
+            return "Decoding Error"
         case .unauthorized:
             return "Session expired"
-        case .badImage:
-            return "Bad Image"
+        case .noResponse:
+            return "Request does not have a response"
         default:
             return "Unknown error"
         }

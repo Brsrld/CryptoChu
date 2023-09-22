@@ -51,10 +51,13 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
             self.view.activityStartAnimating()
         case .finished:
             self.view.activityStopAnimating()
-            self.coinListTableView.reloadData()
+            self.viewModel.contentsFill()
             self.prepareEmptyView(isHidden: true)
+            self.coinListTableView.reloadData()
         case .error(error: let error):
             self.alert(message: error)
+        case .filterSuccess:
+            self.coinListTableView.reloadData()
         }
     }
     
@@ -106,21 +109,20 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
 // MARK: - UITableViewDataSource
 extension ListAllCoinViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = viewModel.coinList?.data?.markets?.count else { return 0}
-        return count
+        return viewModel.filteredCoinList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier:  String(describing: ListAllCoinTableViewCell.self),
-                                                       for: indexPath) as? ListAllCoinTableViewCell,
-              let isFavorite = viewModel.coinList?.data?.markets?[indexPath.row].isFavorite
-        else { return UITableViewCell() }
-        
+                                                       for: indexPath) as? ListAllCoinTableViewCell
+        else { return UITableViewCell()}
+            
+        let isChecked = viewModel.filteredCoinList[indexPath.row].isFavorite
         cell.setUpContents(item: ListAllCoinTableViewCellItems(baseCurrency:
-                                                                viewModel.coinList?.data?.markets?[indexPath.row].baseCurrency,
-                                                               counterCurrency: viewModel.coinList?.data?.markets?[indexPath.row].counterCurrencyName,
+                                                                viewModel.filteredCoinList[indexPath.row].baseCurrency,
+                                                               counterCurrency: viewModel.filteredCoinList[indexPath.row].counterCurrencyName,
                                                                indexPath: indexPath.row,
-                                                               buttonImage: isFavorite ? "star.fill" : "star",
+                                                               buttonImage: isChecked ? "star.fill" : "star",
                                                                delegate: self))
         
         return cell
@@ -133,6 +135,5 @@ extension ListAllCoinViewController: ListAllCoinTableViewCellOutputProtocol {
         guard let indexPath = indexPath else { return }
         viewModel.isFavoriteControl(index: indexPath)
         coinListTableView.reloadData()
-        print(indexPath)
     }
 }

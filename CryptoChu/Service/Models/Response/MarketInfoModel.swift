@@ -8,18 +8,18 @@
 import Foundation
 
 // MARK: - MarketInfoModel
-struct MarketInfoModel: Decodable {
+struct MarketInfoModel: Codable {
     let status: String?
     var data: MarketData?
 }
 
 // MARK: - MarketData
-struct MarketData: Decodable {
+struct MarketData: Codable {
     var markets: [Market]?
 }
 
 // MARK: - Market
-struct Market: Decodable {
+struct Market: Codable {
     let marketCode: String?
     let urlSymbol: String?
     let baseCurrency: String?
@@ -59,7 +59,7 @@ struct Market: Decodable {
 }
 
 // MARK: - TriggerOrder
-struct TriggerOrder: Decodable {
+struct TriggerOrder: Codable {
     let l: Bool?
     let m: Bool?
     

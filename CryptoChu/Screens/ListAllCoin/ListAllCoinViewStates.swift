@@ -13,4 +13,5 @@ enum ListAllCoinStates: ViewState {
     case loading
     case finished
     case error(error: String)
+    case filterSuccess
 }

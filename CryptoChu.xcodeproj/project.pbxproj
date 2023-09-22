@@ -44,6 +44,8 @@
 		556DC1122ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1112ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift */; };
 		556DC1142ABDB3AE0085D984 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1132ABDB3AE0085D984 /* EmptyView.swift */; };
 		556DC1162ABDB3CE0085D984 /* EmptyViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1152ABDB3CE0085D984 /* EmptyViewItems.swift */; };
+		556DC1182ABDD1580085D984 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1172ABDD1580085D984 /* Encodable+Extension.swift */; };
+		55F4267E2ABE0BE100E4C1EC /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,8 @@
 		556DC1112ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinTableViewCellItems.swift; sourceTree = "<group>"; };
 		556DC1132ABDB3AE0085D984 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		556DC1152ABDB3CE0085D984 /* EmptyViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewItems.swift; sourceTree = "<group>"; };
+		556DC1172ABDD1580085D984 /* Encodable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
+		55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +252,8 @@
 			children = (
 				5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */,
 				5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */,
+				556DC1172ABDD1580085D984 /* Encodable+Extension.swift */,
+				55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				5543D2F12ABCB27A002E3668 /* Endpoint.swift in Sources */,
 				5523E8B62ABCBBB3002F679D /* ListAllCoinViewBuilder.swift in Sources */,
 				55015D472ABCB1070048553F /* StateSubscription.swift in Sources */,
+				556DC1182ABDD1580085D984 /* Encodable+Extension.swift in Sources */,
 				5543D2F92ABCB4C5002E3668 /* GetASpecificMarketInfo.swift in Sources */,
 				55015D442ABCB1070048553F /* GenericViewState.swift in Sources */,
 				556DC1082ABD99D10085D984 /* ListAllCoinTableViewCell.swift in Sources */,
@@ -393,6 +400,7 @@
 				55015D222ABCB02F0048553F /* SceneDelegate.swift in Sources */,
 				556DC1042ABD96DA0085D984 /* ListAllCoinServiceable.swift in Sources */,
 				5543D3032ABCB675002E3668 /* TickersInfoModel.swift in Sources */,
+				55F4267E2ABE0BE100E4C1EC /* Dictionary+Extension.swift in Sources */,
 				5543D2F22ABCB27A002E3668 /* RequestMethods.swift in Sources */,
 				5523E8B72ABCBBB3002F679D /* ListAllCoinViewStates.swift in Sources */,
 				556DC1142ABDB3AE0085D984 /* EmptyView.swift in Sources */,

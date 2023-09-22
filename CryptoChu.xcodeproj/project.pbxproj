@@ -37,8 +37,13 @@
 		5543D3072ABCBAB6002E3668 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D3062ABCBAB6002E3668 /* CoordinatorProtocol.swift */; };
 		5543D3092ABCBAC1002E3668 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D3082ABCBAC1002E3668 /* Coordinator.swift */; };
 		5543D30E2ABCBB04002E3668 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */; };
-		5543D30F2ABCBB04002E3668 /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D30C2ABCBB04002E3668 /* Encodable+Extension.swift */; };
 		5543D3102ABCBB04002E3668 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */; };
+		556DC1042ABD96DA0085D984 /* ListAllCoinServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1032ABD96DA0085D984 /* ListAllCoinServiceable.swift */; };
+		556DC1082ABD99D10085D984 /* ListAllCoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1072ABD99D10085D984 /* ListAllCoinTableViewCell.swift */; };
+		556DC10B2ABD9A010085D984 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 556DC10A2ABD9A010085D984 /* SnapKit */; };
+		556DC1122ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1112ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift */; };
+		556DC1142ABDB3AE0085D984 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1132ABDB3AE0085D984 /* EmptyView.swift */; };
+		556DC1162ABDB3CE0085D984 /* EmptyViewItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556DC1152ABDB3CE0085D984 /* EmptyViewItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,8 +79,12 @@
 		5543D3062ABCBAB6002E3668 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5543D3082ABCBAC1002E3668 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		5543D30C2ABCBB04002E3668 /* Encodable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		556DC1032ABD96DA0085D984 /* ListAllCoinServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinServiceable.swift; sourceTree = "<group>"; };
+		556DC1072ABD99D10085D984 /* ListAllCoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinTableViewCell.swift; sourceTree = "<group>"; };
+		556DC1112ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinTableViewCellItems.swift; sourceTree = "<group>"; };
+		556DC1132ABDB3AE0085D984 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		556DC1152ABDB3CE0085D984 /* EmptyViewItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556DC10B2ABD9A010085D984 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,11 +120,9 @@
 			children = (
 				5543D3122ABCBB78002E3668 /* Views */,
 				5543D3112ABCBB73002E3668 /* Screens */,
-				5543D3052ABCBA98002E3668 /* Coordinator */,
+				5543D30A2ABCBAEC002E3668 /* Extensions */,
 				55015D4A2ABCB1210048553F /* Service */,
 				55015D342ABCB0D50048553F /* Core */,
-				55015D332ABCB0C90048553F /* App */,
-				5543D30A2ABCBAEC002E3668 /* Extensions */,
 				55015D282ABCB0300048553F /* Assets.xcassets */,
 				55015D2D2ABCB0300048553F /* Info.plist */,
 			);
@@ -134,6 +142,8 @@
 		55015D342ABCB0D50048553F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				55015D332ABCB0C90048553F /* App */,
+				5543D3052ABCBA98002E3668 /* Coordinator */,
 				55015D362ABCB0DF0048553F /* Stateful */,
 			);
 			path = Core;
@@ -219,6 +229,7 @@
 		5543D3042ABCB7D4002E3668 /* Serviceables */ = {
 			isa = PBXGroup;
 			children = (
+				556DC1032ABD96DA0085D984 /* ListAllCoinServiceable.swift */,
 			);
 			path = Serviceables;
 			sourceTree = "<group>";
@@ -235,7 +246,6 @@
 		5543D30A2ABCBAEC002E3668 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5543D30C2ABCBB04002E3668 /* Encodable+Extension.swift */,
 				5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */,
 				5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */,
 			);
@@ -253,8 +263,36 @@
 		5543D3122ABCBB78002E3668 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				556DC1052ABD99A80085D984 /* Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		556DC1052ABD99A80085D984 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				556DC10C2ABD9CC60085D984 /* CustomViews */,
+				556DC1062ABD99AF0085D984 /* TableViewCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		556DC1062ABD99AF0085D984 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				556DC1072ABD99D10085D984 /* ListAllCoinTableViewCell.swift */,
+				556DC1112ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		556DC10C2ABD9CC60085D984 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				556DC1132ABDB3AE0085D984 /* EmptyView.swift */,
+				556DC1152ABDB3CE0085D984 /* EmptyViewItems.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +311,9 @@
 			dependencies = (
 			);
 			name = CryptoChu;
+			packageProductDependencies = (
+				556DC10A2ABD9A010085D984 /* SnapKit */,
+			);
 			productName = CryptoChu;
 			productReference = 55015D1C2ABCB02F0048553F /* CryptoChu.app */;
 			productType = "com.apple.product-type.application";
@@ -301,6 +342,9 @@
 				Base,
 			);
 			mainGroup = 55015D132ABCB02F0048553F;
+			packageReferences = (
+				556DC1092ABD9A010085D984 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 55015D1D2ABCB02F0048553F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -332,6 +376,7 @@
 				55015D472ABCB1070048553F /* StateSubscription.swift in Sources */,
 				5543D2F92ABCB4C5002E3668 /* GetASpecificMarketInfo.swift in Sources */,
 				55015D442ABCB1070048553F /* GenericViewState.swift in Sources */,
+				556DC1082ABD99D10085D984 /* ListAllCoinTableViewCell.swift in Sources */,
 				5543D2FD2ABCB551002E3668 /* GetASpecificTickerInfo.swift in Sources */,
 				55015D202ABCB02F0048553F /* AppDelegate.swift in Sources */,
 				5543D3072ABCBAB6002E3668 /* CoordinatorProtocol.swift in Sources */,
@@ -340,23 +385,26 @@
 				55015D422ABCB1070048553F /* CustomLogDescriptionConvertible.swift in Sources */,
 				5543D2F72ABCB498002E3668 /* ListAllMarketInfo.swift in Sources */,
 				55015D492ABCB1070048553F /* Store.swift in Sources */,
+				556DC1122ABDACFC0085D984 /* ListAllCoinTableViewCellItems.swift in Sources */,
 				5543D2F02ABCB27A002E3668 /* HttpClient.swift in Sources */,
 				5543D2FF2ABCB57F002E3668 /* MarketInfoModel.swift in Sources */,
 				5523E8B82ABCBBB3002F679D /* ListAllCoinViewController.swift in Sources */,
 				5543D3102ABCBB04002E3668 /* UIViewController+Extension.swift in Sources */,
 				55015D222ABCB02F0048553F /* SceneDelegate.swift in Sources */,
+				556DC1042ABD96DA0085D984 /* ListAllCoinServiceable.swift in Sources */,
 				5543D3032ABCB675002E3668 /* TickersInfoModel.swift in Sources */,
 				5543D2F22ABCB27A002E3668 /* RequestMethods.swift in Sources */,
 				5523E8B72ABCBBB3002F679D /* ListAllCoinViewStates.swift in Sources */,
+				556DC1142ABDB3AE0085D984 /* EmptyView.swift in Sources */,
 				5523E8B92ABCBBB3002F679D /* ListAllCoinViewModel.swift in Sources */,
 				5543D3092ABCBAC1002E3668 /* Coordinator.swift in Sources */,
-				5543D30F2ABCBB04002E3668 /* Encodable+Extension.swift in Sources */,
 				5543D30E2ABCBB04002E3668 /* UIView+Extension.swift in Sources */,
 				5543D2EF2ABCB27A002E3668 /* RequestError.swift in Sources */,
 				55015D432ABCB1070048553F /* GenericState.swift in Sources */,
 				55015D462ABCB1070048553F /* ViewModel.swift in Sources */,
 				55015D452ABCB1070048553F /* CustomOperators.swift in Sources */,
 				5543D2FB2ABCB502002E3668 /* ListAllTickersInfo.swift in Sources */,
+				556DC1162ABDB3CE0085D984 /* EmptyViewItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +616,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		556DC1092ABD9A010085D984 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		556DC10A2ABD9A010085D984 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 556DC1092ABD9A010085D984 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 55015D142ABCB02F0048553F /* Project object */;
 }

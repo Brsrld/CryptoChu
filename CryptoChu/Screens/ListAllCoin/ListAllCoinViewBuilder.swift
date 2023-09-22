@@ -11,9 +11,10 @@ import UIKit
 
 struct ListAllCoinBuilder {
     static func build(coordinator: Coordinator) -> UIViewController {
-        
-        let viewModel = ListAllCoinViewModel()
-        let viewController = ListAllCoinViewController(coordinator: coordinator, viewModel: viewModel)
+        let service: ListAllCoinServiceable = ListAllCoinService()
+        let viewModel = ListAllCoinViewModel(service: service)
+        let viewController = ListAllCoinViewController(coordinator: coordinator,
+                                                       viewModel: viewModel)
         
         return viewController
     }

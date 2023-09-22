@@ -10,4 +10,7 @@ import Foundation
 
 enum ListAllCoinStates: ViewState {
     case idle
+    case loading
+    case finished
+    case error(error: String)
 }

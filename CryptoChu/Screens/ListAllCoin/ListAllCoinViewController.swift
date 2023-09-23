@@ -13,12 +13,22 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     // MARK: - Properties
     lazy var coinListTableView: UITableView = {
         let table = UITableView()
+        table.dataSource = self
+        table.delegate = self
         return table
     }()
     
     private let emptySuperView: UIView = {
         let view = UIView()
         return view
+    }()
+    
+    private lazy var searchBar: UISearchBar = {
+       let search = UISearchBar()
+        search.placeholder = "Search coin..."
+        search.searchBarStyle = .minimal
+        search.delegate = self
+        return search
     }()
     
     private var viewModel: ListAllCoinViewModel
@@ -44,7 +54,7 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     func render(state: ListAllCoinStates) {
         switch state {
         case .idle:
-            self.viewModel.serviceInit()
+            self.viewModel.fillCoinData()
             self.prepareUI()
             self.view.backgroundColor = .white
         case .loading:
@@ -52,7 +62,6 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
         case .finished:
             self.view.activityStopAnimating()
             self.prepareEmptyView(isHidden: true)
-            self.viewModel.readData()
             self.coinListTableView.reloadData()
         case .error(error: let error):
             self.alert(message: error)
@@ -67,16 +76,23 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     
     private func prepareTableView() {
         view.addSubview(coinListTableView)
+        view.addSubview(searchBar)
         coinListTableView.register(ListAllCoinTableViewCell.self,
                                    forCellReuseIdentifier: String(describing: ListAllCoinTableViewCell.self))
         
-        coinListTableView.snp.makeConstraints { make in
+        searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(12)
+            make.left.equalToSuperview().offset(12)
+            make.right.equalToSuperview().offset(-12)
+            make.height.equalTo(32)
+        }
+        
+        coinListTableView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(12)
             make.bottom.equalToSuperview().offset(12)
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview().offset(-12)
         }
-        coinListTableView.dataSource = self
     }
     
     private func prepareEmptyView(isHidden: Bool) {
@@ -104,8 +120,8 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     }
 }
 
-// MARK: - UITableViewDataSource
-extension ListAllCoinViewController: UITableViewDataSource {
+// MARK: -  UITableViewDataSource, UITableViewDelegate
+extension ListAllCoinViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = viewModel.coinList?.data?.markets?.count else { return 0}
         return count
@@ -118,7 +134,7 @@ extension ListAllCoinViewController: UITableViewDataSource {
         
         cell.setUpContents(item: ListAllCoinTableViewCellItems(baseCurrency:
                                                                 viewModel.coinList?.data?.markets?[indexPath.row].baseCurrency,
-                                                               counterCurrency: viewModel.coinList?.data?.markets?[indexPath.row].counterCurrencyName,
+                                                               counterCurrency: viewModel.coinList?.data?.markets?[indexPath.row].counterCurrency,
                                                                indexPath: indexPath,
                                                                isFavorite: viewModel.coinList?.data?.markets?[indexPath.row].isFavorite,
                                                                delegate: self))
@@ -133,5 +149,13 @@ extension ListAllCoinViewController: ListAllCoinTableViewCellOutputProtocol {
         guard let indexPath = indexPath else { return }
         viewModel.isFavoriteControl(index: indexPath.row)
         self.coinListTableView.reloadRows(at: [indexPath], with: .fade)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension ListAllCoinViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchCoins(text: searchText)
+        self.coinListTableView.reloadData()
     }
 }

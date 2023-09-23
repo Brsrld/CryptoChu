@@ -12,6 +12,7 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
     
     private var service: ListAllCoinServiceable
     private(set) var coinList: MarketInfoModel?
+    private var serviceData: MarketInfoModel?
     
     init(service: ListAllCoinServiceable) {
         self.service = service
@@ -22,16 +23,31 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
         UserDefaults.standard.set(coinList.encode(), forKey: "coinList")
     }
     
-    func readData() {
-        if let data = UserDefaults.standard.object(forKey: "coinList") as? Data,
-           let coins = try? JSONDecoder().decode(MarketInfoModel?.self, from: data) {
-            if coins.data?.markets?.count == coinList?.data?.markets?.count {
-                coinList = coins
-            }
-        }
+    func fillCoinData() {
+        serviceInit()
+        readData()
+        serviceData = coinList
     }
-
-    func serviceInit() {
+    
+    func searchCoins(text: String) {
+        guard let data = self.serviceData?.data?.markets else { return }
+        var searchedData: [Market] = []
+        
+        searchedData = data.filter({
+            guard let first = $0.baseCurrency?.lowercased().contains(text.lowercased()),
+                  let second = $0.counterCurrency?.lowercased().contains(text.lowercased()) else { return false }
+            return first || second })
+        
+        coinList?.data?.markets = text != "" ? searchedData : data
+    }
+    
+    private func readData() {
+        guard let favoriteData = UserDefaults.standard.object(forKey: "coinList") as? Data,
+              let favoriteCoins = try? JSONDecoder().decode(MarketInfoModel?.self, from: favoriteData) else { return }
+        self.coinList = favoriteCoins
+    }
+    
+    private func serviceInit() {
         changeState(newState: .loading)
         Task { [weak self] in
             guard let self = self else { return }

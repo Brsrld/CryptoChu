@@ -56,7 +56,6 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
         case .idle:
             self.viewModel.fillCoinData()
             self.prepareUI()
-            self.view.backgroundColor = .white
         case .loading:
             self.view.activityStartAnimating()
         case .finished:
@@ -71,6 +70,7 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     private func prepareUI() {
         title = "Coin List"
         navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .white
         prepareTableView()
     }
     
@@ -139,6 +139,12 @@ extension ListAllCoinViewController: UITableViewDataSource, UITableViewDelegate 
                                                                isFavorite: viewModel.coinList?.data?.markets?[indexPath.row].isFavorite,
                                                                delegate: self))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let market = viewModel.coinList?.data?.markets?[indexPath.row] else { return }
+        coordinator.eventOccurred(with: CoinDetailsBuilder.build(coordinator: coordinator,
+                                                                 coinInfo: market))
     }
 }
 

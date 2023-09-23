@@ -11,8 +11,8 @@ import Foundation
 final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
     
     private var service: ListAllCoinServiceable
-    private(set) var coinList: MarketInfoModel?
     private var serviceData: MarketInfoModel?
+    private(set) var coinList: MarketInfoModel?
     
     init(service: ListAllCoinServiceable) {
         self.service = service
@@ -32,13 +32,14 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
     func searchCoins(text: String) {
         guard let data = self.serviceData?.data?.markets else { return }
         var searchedData: [Market] = []
+        let condition = text.count > 2 && text != ""
         
         searchedData = data.filter({
             guard let first = $0.baseCurrency?.lowercased().contains(text.lowercased()),
                   let second = $0.counterCurrency?.lowercased().contains(text.lowercased()) else { return false }
             return first || second })
         
-        coinList?.data?.markets = text != "" ? searchedData : data
+        coinList?.data?.markets = condition ? searchedData : data
     }
     
     private func readData() {

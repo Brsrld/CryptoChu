@@ -11,7 +11,7 @@ import SnapKit
 class ListAllCoinTableViewCell: UITableViewCell {
     
     weak var delegate: ListAllCoinTableViewCellOutputProtocol?
-    var indexPath: Int?
+    var indexPath: IndexPath?
     
     private lazy var coinNameLabel: UILabel = {
         let label = UILabel()
@@ -22,7 +22,7 @@ class ListAllCoinTableViewCell: UITableViewCell {
         return label
     }()
     
-    private var startButton: UIButton = {
+    private var starButton: UIButton = {
         let button = UIButton()
         return button
     }()
@@ -43,7 +43,7 @@ class ListAllCoinTableViewCell: UITableViewCell {
     }
     
     private func setUpView() {
-        contentView.addSubview(startButton)
+        contentView.addSubview(starButton)
         contentView.addSubview(coinNameLabel)
         
         coinNameLabel.snp.makeConstraints { make in
@@ -53,14 +53,14 @@ class ListAllCoinTableViewCell: UITableViewCell {
             make.height.equalTo(50)
         }
         
-        startButton.snp.makeConstraints { make in
+        starButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.bottom.equalToSuperview().offset(-12)
             make.right.equalToSuperview().offset(-12)
             make.height.equalTo(150)
         }
         
-        startButton.addTarget(self, action:#selector(onClick), for: .touchUpInside)
+        starButton.addTarget(self, action:#selector(onClick), for: .touchUpInside)
     }
     
     func setUpContents(item: ListAllCoinTableViewCellItems) {
@@ -68,11 +68,15 @@ class ListAllCoinTableViewCell: UITableViewCell {
         self.indexPath = item.indexPath
         
         guard let baseCurrency = item.baseCurrency,
-              let counterCurrency = item.counterCurrency,
-              let buttonImageString = item.buttonImage else { return }
+              let counterCurrency = item.counterCurrency else { return }
         
         self.coinNameLabel.text = "\(baseCurrency)/\(counterCurrency)"
-        startButton.setImage(UIImage(systemName: buttonImageString)?.resizableImage(withCapInsets: .zero), for: .normal)
+        
+        if item.isFavorite == true {
+            starButton.setImage(UIImage(systemName: "star.fill")?.resizableImage(withCapInsets: .zero), for: .normal)
+        } else {
+            starButton.setImage(UIImage(systemName: "star")?.resizableImage(withCapInsets: .zero), for: .normal)
+        }
     }
     
     @objc func onClick(sender: UIButton){

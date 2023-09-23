@@ -10,15 +10,15 @@ import UIKit
 
 // MARK: - ListAllCoinTableViewCellOutputProtocol
 protocol ListAllCoinTableViewCellOutputProtocol: NSObject {
-    func onTapped(indexPath: Int?)
+    func onTapped(indexPath: IndexPath?)
 }
 
 // MARK: - Items
 struct ListAllCoinTableViewCellItems {
     let baseCurrency: String?
     let counterCurrency: String?
-    let indexPath: Int?
-    var buttonImage: String?
+    let indexPath: IndexPath?
+    var isFavorite: Bool?
     weak var delegate: ListAllCoinTableViewCellOutputProtocol?
     
 }

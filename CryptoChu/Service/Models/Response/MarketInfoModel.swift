@@ -36,7 +36,7 @@ struct Market: Codable {
     let baseCurrencyName: String?
     let counterCurrencyName: String?
     let triggerOrder: TriggerOrder?
-    var isFavorite: Bool = false
+    var isFavorite: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case marketCode = "market_code"

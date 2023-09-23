@@ -11,56 +11,26 @@ import Foundation
 final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
     
     private var service: ListAllCoinServiceable
-    private var favoriteCoins: [Market] = []
-    private var coinList: MarketInfoModel?
-    var filteredCoinList: [Market] = []
+    private(set) var coinList: MarketInfoModel?
     
     init(service: ListAllCoinServiceable) {
         self.service = service
     }
     
-    private func readData() {
-        if let data = UserDefaults.standard.object(forKey: "coinList") as? Data,
-           let pets = try? JSONDecoder().decode([Market].self, from: data) {
-            self.favoriteCoins = pets
-        }
-    }
-    
-    private func filterData() {
-        let filteredData = coinList?.data?.markets?.filter { coin in
-            favoriteCoins.contains(where: { favoriteCoin in
-                favoriteCoin.marketCode == coin.marketCode
-            })
-        }
-        
-        guard var filteredData = filteredData,
-              var data = coinList?.data?.markets else { return }
-        
-        for index in filteredData.indices {
-            filteredData[index].isFavorite = true
-            data = data.filter { $0.marketCode != filteredData[index].marketCode}
-            data.append(filteredData[index])
-        }
-        self.filteredCoinList = data
-    }
-    
     func isFavoriteControl(index: Int) {
-        if favoriteCoins.contains(where: { $0.marketCode == filteredCoinList[index].marketCode }){
-            favoriteCoins = favoriteCoins.filter { $0.marketCode != filteredCoinList[index].marketCode }
-            UserDefaults.standard.removeObject(forKey: "coinList")
-            UserDefaults.standard.set(favoriteCoins.encode(), forKey: "coinList")
-        } else {
-            favoriteCoins.append(filteredCoinList[index])
-            UserDefaults.standard.set(favoriteCoins.encode(), forKey: "coinList")
+        coinList?.data?.markets?[index].isFavorite?.toggle()
+        UserDefaults.standard.set(coinList.encode(), forKey: "coinList")
+    }
+    
+    func readData() {
+        if let data = UserDefaults.standard.object(forKey: "coinList") as? Data,
+           let coins = try? JSONDecoder().decode(MarketInfoModel?.self, from: data) {
+            if coins.data?.markets?.count == coinList?.data?.markets?.count {
+                coinList = coins
+            }
         }
-        filterData()
     }
-    
-    func contentsFill() {
-        readData()
-        filterData()
-    }
-    
+
     func serviceInit() {
         changeState(newState: .loading)
         Task { [weak self] in

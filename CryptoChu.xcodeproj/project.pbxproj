@@ -45,9 +45,9 @@
 		557B77F72AC02E5E0043D5C8 /* AllCoinList.json in Resources */ = {isa = PBXBuildFile; fileRef = 557B77F62AC02E5E0043D5C8 /* AllCoinList.json */; };
 		557B77FB2AC030750043D5C8 /* ListAllCoinViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B77FA2AC030750043D5C8 /* ListAllCoinViewModelTest.swift */; };
 		557B77FE2AC031130043D5C8 /* MockHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B77FD2AC031130043D5C8 /* MockHttpClient.swift */; };
-		557B78032AC044D30043D5C8 /* ViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B78022AC044D30043D5C8 /* ViewSpy.swift */; };
 		557B78062AC05FE40043D5C8 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B78052AC05FE40043D5C8 /* BaseViewModel.swift */; };
 		557B78082AC05FFD0043D5C8 /* BaseViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B78072AC05FFD0043D5C8 /* BaseViewState.swift */; };
+		557B780B2AC0659F0043D5C8 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */; };
 		55F4267E2ABE0BE100E4C1EC /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,9 +102,9 @@
 		557B77F62AC02E5E0043D5C8 /* AllCoinList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AllCoinList.json; sourceTree = "<group>"; };
 		557B77FA2AC030750043D5C8 /* ListAllCoinViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAllCoinViewModelTest.swift; sourceTree = "<group>"; };
 		557B77FD2AC031130043D5C8 /* MockHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpClient.swift; sourceTree = "<group>"; };
-		557B78022AC044D30043D5C8 /* ViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSpy.swift; sourceTree = "<group>"; };
 		557B78052AC05FE40043D5C8 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		557B78072AC05FFD0043D5C8 /* BaseViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewState.swift; sourceTree = "<group>"; };
+		557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -325,7 +325,7 @@
 		557B77E62AC02BFC0043D5C8 /* CryptoChuTests */ = {
 			isa = PBXGroup;
 			children = (
-				557B77FF2AC044740043D5C8 /* Statefull */,
+				557B78092AC065840043D5C8 /* Extension */,
 				557B77FC2AC031010043D5C8 /* Network */,
 				557B77F92AC0305B0043D5C8 /* ViewModelTest */,
 				557B77F32AC02CB00043D5C8 /* MockData */,
@@ -368,14 +368,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		557B77FF2AC044740043D5C8 /* Statefull */ = {
-			isa = PBXGroup;
-			children = (
-				557B78022AC044D30043D5C8 /* ViewSpy.swift */,
-			);
-			path = Statefull;
-			sourceTree = "<group>";
-		};
 		557B78042AC05FC70043D5C8 /* BaseViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +375,14 @@
 				557B78072AC05FFD0043D5C8 /* BaseViewState.swift */,
 			);
 			path = BaseViewModel;
+			sourceTree = "<group>";
+		};
+		557B78092AC065840043D5C8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,8 +531,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				557B780B2AC0659F0043D5C8 /* XCTestCase+Extension.swift in Sources */,
 				557B77F22AC02C940043D5C8 /* MockURLProtocol.swift in Sources */,
-				557B78032AC044D30043D5C8 /* ViewSpy.swift in Sources */,
 				557B77FE2AC031130043D5C8 /* MockHttpClient.swift in Sources */,
 				557B77F52AC02CC60043D5C8 /* Mockable.swift in Sources */,
 				557B77F02AC02C6B0043D5C8 /* HttpClientTest.swift in Sources */,

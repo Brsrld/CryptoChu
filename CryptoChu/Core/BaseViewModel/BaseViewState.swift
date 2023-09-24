@@ -7,7 +7,7 @@
 
 import Foundation
 // MARK: - ViewStateProtocol
-protocol ViewStateProtocol {
+protocol ViewStateProtocol: Equatable {
     static var idle: Self { get }
 }
 

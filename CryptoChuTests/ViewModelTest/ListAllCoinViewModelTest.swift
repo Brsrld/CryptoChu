@@ -13,19 +13,12 @@ import Combine
 
 class ListAllCoinViewModelTest: XCTestCase {
     private var bindings = Set<AnyCancellable>()
-    private var viewModel: ListAllCoinViewModel!
+    private var viewModel: ListAllCoinViewModelProtocol!
     private var filename = "AllCoinList"
-    private let marketSuccessExpectation = XCTestExpectation(description: "market succeess")
-    private let idleStateExpectation = XCTestExpectation(description: "idle state expectation")
-    private let loadingStateExpectation = XCTestExpectation(description: "loading state expectation")
-    private let finishedStateExpectation = XCTestExpectation(description: "finished state expectation")
-    private let errorStateExpectation = XCTestExpectation(description: "error state expectation")
-    private let emptyStateExpectation = XCTestExpectation(description: "empty state expectation")
     
     override func setUp() {
         super.setUp()
         viewModel = ListAllCoinViewModel(service: MockHttpClient(filename: filename))
-        
     }
     
     override func tearDown() {
@@ -34,28 +27,100 @@ class ListAllCoinViewModelTest: XCTestCase {
     }
     
     func test_List_All_Coins_Success()  {
-        let view = ViewSpy(viewModel: viewModel)
-        viewModel.subscribe(from: view)
-        viewModel.state
-        view.$state
-            .receive(on: RunLoop.main)
-            .sink { state in
-                switch state {
-                case .idle:
-                    print("idle")
-                case .loading:
-                    print("loading")
-                case .finished:
-                    print("finished")
-                case .error(_):
-                    print("error")
-                case .empty:
-                    print("empty")
-                case .none:
-                    print("empty")
-                }
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "is state idle",
+                                      equals: [{ $0 == .idle}])
+        wait(for: [expectation.expectation], timeout: 1)
+    }
+    
+    func test_loading_State()  {
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "is state loading",
+                                      equals: [{ $0 == .loading}])
+        viewModel.serviceInit()
+        wait(for: [expectation.expectation], timeout: 1)
+    }
+    
+    func test_finished_State() {
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "is state finished",
+                                      equals: [{ $0 == .finished}])
+        viewModel.serviceInit()
+        wait(for: [expectation.expectation], timeout: 1)
+    }
+    
+    func test_error_State() {
+        filename = "error"
+        setUp()
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "is state error",
+                                      equals: [{ $0 == .error(error: RequestError.invalidURL.customMessage)}])
+        viewModel.serviceInit()
+        wait(for: [expectation.expectation], timeout: 1)
+    }
+    
+    func test_empty_State() {
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "is state empty",
+                                      equals: [{ $0 == .empty}])
+        viewModel.checkEmptyState()
+        wait(for: [expectation.expectation], timeout: 1)
+    }
+    
+    func test_success_data() {
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "market succeess",
+                                      equals: [{ $0 == .finished && self.viewModel.coinList?.data?.markets?.isEmpty == false }])
+        viewModel.serviceInit()
+        wait(for: [expectation.expectation], timeout: 3)
+    }
+    
+    func test_add_favorite() {
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "add favorite succeess",
+                                      equals: [{
+            switch $0 {
+            case .finished:
+                self.viewModel.isFavoriteControl(index: 0)
+                self.viewModel.coinList?.data?.markets?.removeAll()
+                self.viewModel.readData()
+                return self.viewModel.coinList?.data?.markets?.isEmpty == false
+            case .idle:
+                return false
+            case .loading:
+                return false
+            case .error(_):
+                return false
+            case .empty:
+                return false
             }
-            .store(in: &bindings)
+        }])
+        
+        viewModel.serviceInit()
+        wait(for: [expectation.expectation], timeout: 1)
+    }
+    
+    func test_search_success() {
+        let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
+                                      expectationDescription: "add favorite succeess",
+                                      equals: [{
+            switch $0 {
+            case .finished:
+                self.viewModel.searchCoins(text: "btc")
+                return self.viewModel.coinList?.data?.markets?.isEmpty == false
+            case .idle:
+                return false
+            case .loading:
+                return false
+            case .error(_):
+                return false
+            case .empty:
+                return false
+            }
+        }])
+        
+        viewModel.serviceInit()
+        wait(for: [expectation.expectation], timeout: 1)
     }
 }
 

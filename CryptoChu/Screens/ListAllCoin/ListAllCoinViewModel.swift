@@ -12,7 +12,7 @@ import Combine
 // MARK: - ListAllCoinViewModelProtocol
 protocol ListAllCoinViewModelProtocol {
     var statePublisher: Published<ListAllCoinStates>.Publisher { get }
-    var coinList: MarketInfoModel? { get }
+    var coinList: MarketInfoModel? { get set }
     func searchCoins(text: String)
     func isFavoriteControl(index: Int)
     func readData()
@@ -49,7 +49,7 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
         checkEmptyState()
     }
     
-     func readData() {
+    func readData() {
         guard let favoriteData = UserDefaults.standard.object(forKey: "coinList") as? Data,
               let favoriteCoins = try? JSONDecoder().decode(MarketInfoModel?.self,
                                                             from: favoriteData) else { return }
@@ -58,7 +58,7 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
     
     func checkEmptyState() {
         guard let coinlistStatus = self.coinList?.data?.markets?.isEmpty,
-              let serviceDataStatus = self.serviceData?.data?.markets?.isEmpty else { return }
+              let serviceDataStatus = self.serviceData?.data?.markets?.isEmpty else { return changeState(.empty)}
         
         if coinlistStatus || serviceDataStatus {
             changeState(.empty)
@@ -67,7 +67,7 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
         }
     }
     
-     func serviceInit() {
+    func serviceInit() {
         changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }

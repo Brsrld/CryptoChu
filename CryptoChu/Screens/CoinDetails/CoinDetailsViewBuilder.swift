@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 struct CoinDetailsBuilder {
-    static func build(coordinator: Coordinator, coinInfo: Market) -> UIViewController {
+    static func build(coordinator: Coordinator, marketCode: String, isFavorite: Bool) -> UIViewController {
         let service: CoinDetailsServiceable = CoinDetailsService()
-        let viewModel: CoinDetailsViewModelProtocol = CoinDetailsViewModel(coinInfo: coinInfo, service: service)
+        let viewModel: CoinDetailsViewModelProtocol = CoinDetailsViewModel(marketCode: marketCode, isFavorite: isFavorite, service: service)
         let viewController = CoinDetailsViewController(coordinator: coordinator, viewModel: viewModel)
         
         return viewController

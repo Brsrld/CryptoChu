@@ -157,9 +157,9 @@ extension ListAllCoinViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let market = viewModel.coinList?.data?.markets?[indexPath.row] else { return }
-        coordinator.eventOccurred(with: CoinDetailsBuilder.build(coordinator: coordinator,
-                                                                 coinInfo: market))
+        guard let marketCode = viewModel.coinList?.data?.markets?[indexPath.row].marketCode,
+              let isFavorite = viewModel.coinList?.data?.markets?[indexPath.row].isFavorite else { return }
+        coordinator.eventOccurred(with: CoinDetailsBuilder.build(coordinator: coordinator, marketCode: marketCode, isFavorite: isFavorite))
     }
 }
 

@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "data": {
+    "ticker": {
+      "market": {
+        "market_code": "BTCTRY",
+        "base_currency_code": "BTC",
+        "counter_currency_code": "TRY"
+      },
+      "bid": "40683.54",
+      "ask": "40700.00",
+      "last_price": "40683.54",
+      "last_size": "0.05630107",
+      "volume_24h": "1.48920663",
+      "change_24h": "1.47",
+      "low_24h": "39690.37",
+      "high_24h": "41000.00",
+      "avg_24h": "40062.85",
+      "timestamp": "1525908532.9022408"
+    }
+  }
+}

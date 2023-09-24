@@ -48,6 +48,8 @@
 		557B78062AC05FE40043D5C8 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B78052AC05FE40043D5C8 /* BaseViewModel.swift */; };
 		557B78082AC05FFD0043D5C8 /* BaseViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B78072AC05FFD0043D5C8 /* BaseViewState.swift */; };
 		557B780B2AC0659F0043D5C8 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */; };
+		557B780E2AC087230043D5C8 /* CoinDetilsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B780D2AC087230043D5C8 /* CoinDetilsViewModelTest.swift */; };
+		557B78102AC0885E0043D5C8 /* TickerInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 557B780F2AC0885E0043D5C8 /* TickerInfo.json */; };
 		55F4267E2ABE0BE100E4C1EC /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +107,8 @@
 		557B78052AC05FE40043D5C8 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		557B78072AC05FFD0043D5C8 /* BaseViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewState.swift; sourceTree = "<group>"; };
 		557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
+		557B780D2AC087230043D5C8 /* CoinDetilsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetilsViewModelTest.swift; sourceTree = "<group>"; };
+		557B780F2AC0885E0043D5C8 /* TickerInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TickerInfo.json; sourceTree = "<group>"; };
 		55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -348,6 +352,7 @@
 			children = (
 				557B77F42AC02CC60043D5C8 /* Mockable.swift */,
 				557B77F62AC02E5E0043D5C8 /* AllCoinList.json */,
+				557B780F2AC0885E0043D5C8 /* TickerInfo.json */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				557B77FA2AC030750043D5C8 /* ListAllCoinViewModelTest.swift */,
+				557B780D2AC087230043D5C8 /* CoinDetilsViewModelTest.swift */,
 			);
 			path = ViewModelTest;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				557B77F72AC02E5E0043D5C8 /* AllCoinList.json in Resources */,
+				557B78102AC0885E0043D5C8 /* TickerInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +540,7 @@
 			files = (
 				557B780B2AC0659F0043D5C8 /* XCTestCase+Extension.swift in Sources */,
 				557B77F22AC02C940043D5C8 /* MockURLProtocol.swift in Sources */,
+				557B780E2AC087230043D5C8 /* CoinDetilsViewModelTest.swift in Sources */,
 				557B77FE2AC031130043D5C8 /* MockHttpClient.swift in Sources */,
 				557B77F52AC02CC60043D5C8 /* Mockable.swift in Sources */,
 				557B77F02AC02C6B0043D5C8 /* HttpClientTest.swift in Sources */,

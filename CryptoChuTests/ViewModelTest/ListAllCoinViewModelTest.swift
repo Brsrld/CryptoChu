@@ -12,7 +12,6 @@ import Combine
 
 
 class ListAllCoinViewModelTest: XCTestCase {
-    private var bindings = Set<AnyCancellable>()
     private var viewModel: ListAllCoinViewModelProtocol!
     private var filename = "AllCoinList"
     

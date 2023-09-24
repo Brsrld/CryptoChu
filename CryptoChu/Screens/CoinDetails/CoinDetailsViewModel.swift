@@ -13,23 +13,26 @@ import Combine
 protocol CoinDetailsViewModelProtocol {
     var statePublisher: Published<CoinDetailsStates>.Publisher { get }
     var coinDetails: TickersInfoModel? { get }
-    var coinInfo: Market { get }
+    var marketCode: String { get }
+    var isFavorite: Bool { get }
     func serviceInit()
 }
 
 final class CoinDetailsViewModel: BaseViewModel<CoinDetailsStates> {
     private let service: CoinDetailsServiceable
-    var coinInfo: Market
+    var marketCode: String
+    var isFavorite: Bool
     var coinDetails: TickersInfoModel?
     
-    init(coinInfo: Market,
+    init(marketCode: String,
+         isFavorite: Bool,
          service: CoinDetailsServiceable) {
-        self.coinInfo = coinInfo
+        self.marketCode = marketCode
+        self.isFavorite = isFavorite
         self.service = service
     }
     
     func serviceInit() {
-        guard let marketCode =  coinInfo.marketCode else { return }
         changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }

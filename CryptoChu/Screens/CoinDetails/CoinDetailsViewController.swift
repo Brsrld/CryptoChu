@@ -161,8 +161,7 @@ final class CoinDetailsViewController: UIViewController {
     }
     
     private func setUpLeftImage() {
-        guard let isfavorite = viewModel.coinInfo.isFavorite  else { return }
-        let logoImage = UIImage(systemName: isfavorite ? "star.fill" : "star")
+        let logoImage = UIImage(systemName: viewModel.isFavorite ? "star.fill" : "star")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
         let imageItem = UIBarButtonItem(customView: logoImageView)

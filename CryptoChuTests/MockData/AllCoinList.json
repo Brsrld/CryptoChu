@@ -1,0 +1,28 @@
+{
+    "status": "success",
+    "data": {
+        "markets": [
+            {
+                "market_code": "BTCTRY",
+                "url_symbol": "btctry",
+                "base_currency": "BTC",
+                "counter_currency": "TRY",
+                "minimum_order_amount": "50.00",
+                "maximum_order_amount": "1000000.00",
+                "base_currency_decimal": 8,
+                "counter_currency_decimal": 2,
+                "presentation_decimal": 2,
+                "resell_market": false,
+                "min_multiplier": "0.60",
+                "max_multiplier": "3.00",
+                "list_date": 0,
+                "base_currency_name": "Bitcoin",
+                "counter_currency_name": "Türk Lirası",
+                "trigger_order": {
+                    "L": true,
+                    "M": true
+                }
+            }
+        ]
+    }
+}

@@ -7,12 +7,24 @@
 //
 //
 import Foundation
+import Combine
 
-final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
+// MARK: - ListAllCoinViewModelProtocol
+protocol ListAllCoinViewModelProtocol {
+    var statePublisher: Published<ListAllCoinStates>.Publisher { get }
+    var coinList: MarketInfoModel? { get }
+    func searchCoins(text: String)
+    func isFavoriteControl(index: Int)
+    func readData()
+    func checkEmptyState()
+    func serviceInit()
+}
+
+final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
     
     private var service: ListAllCoinServiceable
     private var serviceData: MarketInfoModel?
-    private(set) var coinList: MarketInfoModel?
+    var coinList: MarketInfoModel?
     
     init(service: ListAllCoinServiceable) {
         self.service = service
@@ -21,13 +33,6 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
     func isFavoriteControl(index: Int) {
         coinList?.data?.markets?[index].isFavorite?.toggle()
         UserDefaults.standard.set(coinList.encode(), forKey: "coinList")
-    }
-    
-    func fillCoinData() {
-        serviceInit()
-        readData()
-        serviceData = coinList
-        checkEmptyState()
     }
     
     func searchCoins(text: String) {
@@ -44,36 +49,43 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
         checkEmptyState()
     }
     
-    private func readData() {
+     func readData() {
         guard let favoriteData = UserDefaults.standard.object(forKey: "coinList") as? Data,
               let favoriteCoins = try? JSONDecoder().decode(MarketInfoModel?.self,
                                                             from: favoriteData) else { return }
         self.coinList = favoriteCoins
     }
     
-    private func checkEmptyState() {
+    func checkEmptyState() {
         guard let coinlistStatus = self.coinList?.data?.markets?.isEmpty,
               let serviceDataStatus = self.serviceData?.data?.markets?.isEmpty else { return }
         
         if coinlistStatus || serviceDataStatus {
-            changeState(newState: .empty)
+            changeState(.empty)
         } else {
-            changeState(newState: .finished)
+            changeState(.finished)
         }
     }
     
-    private func serviceInit() {
-        changeState(newState: .loading)
+     func serviceInit() {
+        changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }
             let result = await self.service.fetchAllCoinList()
-            self.changeState(newState: .finished)
+            self.changeState(.finished)
             switch result {
             case .success(let success):
+                self.serviceData = success
                 self.coinList = success
             case .failure(let failure):
-                self.changeState(newState: .error(error: failure.customMessage))
+                self.changeState(.error(error: failure.customMessage))
             }
         }
+    }
+}
+
+extension ListAllCoinViewModel: ListAllCoinViewModelProtocol {
+    var statePublisher: Published<ListAllCoinStates>.Publisher {
+        $states
     }
 }

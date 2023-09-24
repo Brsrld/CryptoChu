@@ -8,7 +8,7 @@
 //
 import Foundation
 
-enum CoinDetailsStates: ViewState {
+enum CoinDetailsStates: ViewStateProtocol {
     case idle
     case loading
     case finished

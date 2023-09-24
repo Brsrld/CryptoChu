@@ -12,7 +12,7 @@ import UIKit
 struct CoinDetailsBuilder {
     static func build(coordinator: Coordinator, coinInfo: Market) -> UIViewController {
         let service: CoinDetailsServiceable = CoinDetailsService()
-        let viewModel = CoinDetailsViewModel(coinInfo: coinInfo, service: service)
+        let viewModel: CoinDetailsViewModelProtocol = CoinDetailsViewModel(coinInfo: coinInfo, service: service)
         let viewController = CoinDetailsViewController(coordinator: coordinator, viewModel: viewModel)
         
         return viewController

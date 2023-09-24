@@ -7,8 +7,9 @@
 //
 //
 import UIKit
+import Combine
 
-final class CoinDetailsViewController: UIViewController, StatefulView {
+final class CoinDetailsViewController: UIViewController {
     
     private lazy var coinStatusView: UIView = {
         let view = UIView()
@@ -79,15 +80,17 @@ final class CoinDetailsViewController: UIViewController, StatefulView {
         return stackView
     }()
     
-    private var viewModel: CoinDetailsViewModel
+    private var viewModel: CoinDetailsViewModelProtocol
     private var coordinator: Coordinator
+    private var cancellables: Set<AnyCancellable>
     private var timer = Timer()
     
     // MARK: - Base Functions
     init(coordinator: Coordinator,
-         viewModel: CoinDetailsViewModel) {
+         viewModel: CoinDetailsViewModelProtocol) {
         self.coordinator = coordinator
         self.viewModel = viewModel
+        self.cancellables = []
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -97,23 +100,27 @@ final class CoinDetailsViewController: UIViewController, StatefulView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.subscribe(from: self)
+        handleStates()
     }
     
-    func render(state: CoinDetailsStates) {
-        switch state {
-        case .idle:
-            viewModel.serviceInit()
-            prepareUI()
-        case .loading:
-            self.view.activityStartAnimating()
-        case .finished:
-            self.view.activityStopAnimating()
-            self.fillUIComponents()
-            self.reSendRequest()
-        case .error(let error):
-            self.alert(message: error)
-        }
+    func handleStates() {
+        viewModel.statePublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] (state) in
+                switch state {
+                case .idle:
+                    self?.viewModel.serviceInit()
+                    self?.prepareUI()
+                case .loading:
+                    self?.view.activityStartAnimating()
+                case .finished:
+                    self?.view.activityStopAnimating()
+                    self?.fillUIComponents()
+                    self?.reSendRequest()
+                case .error(let error):
+                    self?.alert(message: error)
+                }
+            }.store(in: &cancellables)
     }
     
     private func prepareUI() {

@@ -7,10 +7,19 @@
 //
 //
 import Foundation
+import Combine
 
-final class CoinDetailsViewModel: ViewModel<CoinDetailsStates> {
+// MARK: - CoinDetailsViewModelProtocol
+protocol CoinDetailsViewModelProtocol {
+    var statePublisher: Published<CoinDetailsStates>.Publisher { get }
+    var coinDetails: TickersInfoModel? { get }
+    var coinInfo: Market { get }
+    func serviceInit()
+}
+
+final class CoinDetailsViewModel: BaseViewModel<CoinDetailsStates> {
     private let service: CoinDetailsServiceable
-    let coinInfo: Market
+    var coinInfo: Market
     var coinDetails: TickersInfoModel?
     
     init(coinInfo: Market,
@@ -21,17 +30,23 @@ final class CoinDetailsViewModel: ViewModel<CoinDetailsStates> {
     
     func serviceInit() {
         guard let marketCode =  coinInfo.marketCode else { return }
-        changeState(newState: .loading)
+        changeState(.loading)
         Task { [weak self] in
             guard let self = self else { return }
             let result = await self.service.fetchCoinDetails(marketCode: marketCode)
-            self.changeState(newState: .finished)
+            self.changeState(.finished)
             switch result {
             case .success(let success):
                 self.coinDetails = success
             case .failure(let failure):
-                self.changeState(newState: .error(error: failure.customMessage))
+                self.changeState(.error(error: failure.customMessage))
             }
         }
+    }
+}
+
+extension CoinDetailsViewModel : CoinDetailsViewModelProtocol {
+    var statePublisher: Published<CoinDetailsStates>.Publisher {
+        $states
     }
 }

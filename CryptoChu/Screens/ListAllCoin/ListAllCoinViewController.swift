@@ -7,8 +7,9 @@
 //
 //
 import UIKit
+import Combine
 
-final class ListAllCoinViewController: UIViewController, StatefulView {
+final class ListAllCoinViewController: UIViewController {
     
     // MARK: - Properties
     private lazy var coinListTableView: UITableView = {
@@ -31,14 +32,16 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
         return search
     }()
     
-    private var viewModel: ListAllCoinViewModel
+    private var viewModel: ListAllCoinViewModelProtocol
     private var coordinator: Coordinator
+    private var cancellables: Set<AnyCancellable>
     
     // MARK: - Base Functions
     init(coordinator: Coordinator,
-         viewModel: ListAllCoinViewModel) {
+         viewModel: ListAllCoinViewModelProtocol) {
         self.coordinator = coordinator
         self.viewModel = viewModel
+        self.cancellables = []
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,25 +51,35 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.subscribe(from: self)
+        handleStates()
     }
     
-    func render(state: ListAllCoinStates) {
-        switch state {
-        case .idle:
-            self.viewModel.fillCoinData()
-            self.prepareUI()
-        case .loading:
-            self.view.activityStartAnimating()
-        case .finished:
-            self.view.activityStopAnimating()
-            self.prepareEmptyView(isHidden: true)
-            self.coinListTableView.reloadData()
-        case .error(error: let error):
-            self.alert(message: error)
-        case .empty:
-            self.prepareEmptyView(isHidden: false)
-        }
+    private func handleStates() {
+        viewModel.statePublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] (state) in
+                switch state {
+                case .idle:
+                    self?.fillData()
+                    self?.prepareUI()
+                case .loading:
+                    self?.view.activityStartAnimating()
+                case .finished:
+                    self?.view.activityStopAnimating()
+                    self?.prepareEmptyView(isHidden: true)
+                    self?.coinListTableView.reloadData()
+                case .error(error: let error):
+                    self?.alert(message: error)
+                case .empty:
+                    self?.prepareEmptyView(isHidden: false)
+                }
+            }.store(in: &cancellables)
+    }
+    
+    private func fillData() {
+        viewModel.serviceInit()
+        viewModel.readData()
+        viewModel.checkEmptyState()
     }
     
     private func prepareUI() {

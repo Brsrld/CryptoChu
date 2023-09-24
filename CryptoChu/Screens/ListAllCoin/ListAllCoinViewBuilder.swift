@@ -12,7 +12,7 @@ import UIKit
 struct ListAllCoinBuilder {
     static func build(coordinator: Coordinator) -> UIViewController {
         let service: ListAllCoinServiceable = ListAllCoinService()
-        let viewModel = ListAllCoinViewModel(service: service)
+        let viewModel: ListAllCoinViewModelProtocol = ListAllCoinViewModel(service: service)
         let viewController = ListAllCoinViewController(coordinator: coordinator,
                                                        viewModel: viewModel)
         

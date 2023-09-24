@@ -27,6 +27,7 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
         serviceInit()
         readData()
         serviceData = coinList
+        chechEmptyState()
     }
     
     func searchCoins(text: String) {
@@ -40,12 +41,24 @@ final class ListAllCoinViewModel: ViewModel<ListAllCoinStates> {
             return first || second })
         
         coinList?.data?.markets = condition ? searchedData : data
+        chechEmptyState()
     }
     
     private func readData() {
         guard let favoriteData = UserDefaults.standard.object(forKey: "coinList") as? Data,
               let favoriteCoins = try? JSONDecoder().decode(MarketInfoModel?.self, from: favoriteData) else { return }
         self.coinList = favoriteCoins
+    }
+    
+    private func chechEmptyState() {
+        guard let coinlistStatus = self.coinList?.data?.markets?.isEmpty,
+              let serviceDataStatus = self.serviceData?.data?.markets?.isEmpty else { return }
+        
+        if coinlistStatus || serviceDataStatus {
+            changeState(newState: .empty)
+        } else {
+            changeState(newState: .finished)
+        }
     }
     
     private func serviceInit() {

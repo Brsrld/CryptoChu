@@ -118,7 +118,7 @@ final class CoinDetailsViewController: UIViewController, StatefulView {
     
     private func prepareUI() {
         title = "Coin Detail"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         self.view.backgroundColor = .white
         
         coinStatusView.addSubview(coinNameLabel)
@@ -178,9 +178,12 @@ final class CoinDetailsViewController: UIViewController, StatefulView {
     }
     
     private func resendRequest() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true, block: { [weak self] _ in
-            self?.viewModel.serviceInit()
-        })
+        DispatchQueue.main.async { [weak self] in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 6,
+                                               repeats: false, block: {_ in
+                self?.viewModel.serviceInit()
+            })
+        }
     }
     
     private func fillUIComponents() {

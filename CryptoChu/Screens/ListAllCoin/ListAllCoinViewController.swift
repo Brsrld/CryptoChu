@@ -64,6 +64,8 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
             self.coinListTableView.reloadData()
         case .error(error: let error):
             self.alert(message: error)
+        case .empty:
+            self.prepareEmptyView(isHidden: false)
         }
     }
     

@@ -20,5 +20,4 @@ struct ListAllCoinTableViewCellItems {
     let indexPath: IndexPath?
     var isFavorite: Bool?
     weak var delegate: ListAllCoinTableViewCellOutputProtocol?
-    
 }

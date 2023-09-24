@@ -110,7 +110,7 @@ final class CoinDetailsViewController: UIViewController, StatefulView {
         case .finished:
             self.view.activityStopAnimating()
             self.fillUIComponents()
-            self.resendRequest()
+            self.reSendRequest()
         case .error(let error):
             self.alert(message: error)
         }
@@ -177,7 +177,7 @@ final class CoinDetailsViewController: UIViewController, StatefulView {
         }
     }
     
-    private func resendRequest() {
+    private func reSendRequest() {
         DispatchQueue.main.async { [weak self] in
             self?.timer = Timer.scheduledTimer(withTimeInterval: 6,
                                                repeats: false, block: {_ in

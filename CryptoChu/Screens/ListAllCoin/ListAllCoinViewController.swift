@@ -11,7 +11,7 @@ import UIKit
 final class ListAllCoinViewController: UIViewController, StatefulView {
     
     // MARK: - Properties
-    lazy var coinListTableView: UITableView = {
+    private lazy var coinListTableView: UITableView = {
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
@@ -99,7 +99,7 @@ final class ListAllCoinViewController: UIViewController, StatefulView {
     
     private func prepareEmptyView(isHidden: Bool) {
         let item = EmptyViewItems(title: "There is no data",
-                                  image: "cart.badge.minus")
+                                  image: "bitcoinsign.circle.fill")
         
         let emptyView = EmptyView(item: item)
         

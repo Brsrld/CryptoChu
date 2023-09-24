@@ -58,7 +58,7 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
     
     func checkEmptyState() {
         guard let coinlistStatus = self.coinList?.data?.markets?.isEmpty,
-              let serviceDataStatus = self.serviceData?.data?.markets?.isEmpty else { return changeState(.empty)}
+              let serviceDataStatus = self.serviceData?.data?.markets?.isEmpty else { return changeState(.empty) }
         
         if coinlistStatus || serviceDataStatus {
             changeState(.empty)

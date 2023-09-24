@@ -68,6 +68,7 @@ final class ListAllCoinViewController: UIViewController {
                     self?.view.activityStopAnimating()
                     self?.prepareEmptyView(isHidden: true)
                     self?.coinListTableView.reloadData()
+                    self?.viewModel.checkEmptyState()
                 case .error(error: let error):
                     self?.alert(message: error)
                 case .empty:
@@ -79,7 +80,6 @@ final class ListAllCoinViewController: UIViewController {
     private func fillData() {
         viewModel.serviceInit()
         viewModel.readData()
-        viewModel.checkEmptyState()
     }
     
     private func prepareUI() {

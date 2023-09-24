@@ -25,14 +25,14 @@ class ListAllCoinViewModelTest: XCTestCase {
         super.tearDown()
     }
     
-    func test_List_All_Coins_Success()  {
+    func test_loading_idle()  {
         let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
                                       expectationDescription: "is state idle",
                                       equals: [{ $0 == .idle}])
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_loading_State()  {
+    func test_loading_state()  {
         let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
                                       expectationDescription: "is state loading",
                                       equals: [{ $0 == .loading}])
@@ -40,7 +40,7 @@ class ListAllCoinViewModelTest: XCTestCase {
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_finished_State() {
+    func test_finished_state() {
         let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
                                       expectationDescription: "is state finished",
                                       equals: [{ $0 == .finished}])
@@ -48,7 +48,7 @@ class ListAllCoinViewModelTest: XCTestCase {
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_error_State() {
+    func test_error_state() {
         filename = "error"
         setUp()
         let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
@@ -58,7 +58,7 @@ class ListAllCoinViewModelTest: XCTestCase {
         wait(for: [expectation.expectation], timeout: 1)
     }
     
-    func test_empty_State() {
+    func test_empty_state() {
         let expectation = expectValue(of: viewModel.statePublisher.eraseToAnyPublisher(),
                                       expectationDescription: "is state empty",
                                       equals: [{ $0 == .empty}])

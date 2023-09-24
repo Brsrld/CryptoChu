@@ -12,6 +12,10 @@ class BaseViewModel<E: ViewStateProtocol> {
     
     func changeState(_ state: E) {
         DispatchQueue.main.async { [weak self] in
+            if self?.states == state {
+                debugPrint("Already \(state)")
+                return
+            }
             self?.states = state
             debugPrint("State changed to \(state)")
         }

@@ -14,18 +14,18 @@ protocol CoinDetailsViewModelProtocol {
     var statePublisher: Published<CoinDetailsStates>.Publisher { get }
     var coinDetails: TickersInfoModel? { get }
     var marketCode: String { get }
-    var isFavorite: Bool { get }
+    var isFavorite: String { get }
     func serviceInit()
 }
 
 final class CoinDetailsViewModel: BaseViewModel<CoinDetailsStates> {
     private let service: CoinDetailsServiceable
     var marketCode: String
-    var isFavorite: Bool
+    var isFavorite: String
     var coinDetails: TickersInfoModel?
     
     init(marketCode: String,
-         isFavorite: Bool,
+         isFavorite: String,
          service: CoinDetailsServiceable) {
         self.marketCode = marketCode
         self.isFavorite = isFavorite

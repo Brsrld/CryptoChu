@@ -71,12 +71,9 @@ class ListAllCoinTableViewCell: UITableViewCell {
               let counterCurrency = item.counterCurrency else { return }
         
         self.coinNameLabel.text = "\(baseCurrency)/\(counterCurrency)"
-        
-        if item.isFavorite == true {
-            starButton.setImage(UIImage(systemName: "star.fill")?.resizableImage(withCapInsets: .zero), for: .normal)
-        } else {
-            starButton.setImage(UIImage(systemName: "star")?.resizableImage(withCapInsets: .zero), for: .normal)
-        }
+        let condition = item.imageName == "star.fill"
+        guard let image = item.imageName else { return }
+        starButton.setImage(UIImage(systemName: condition ? image : "star" )?.resizableImage(withCapInsets: .zero), for: .normal)
     }
     
     @objc func onClick(sender: UIButton){

@@ -23,20 +23,19 @@ struct Market: Codable {
     let marketCode: String?
     let urlSymbol: String?
     let baseCurrency: String?
-    let counterCurrency: String?
+    var counterCurrency: String?
     let minimumOrderAmount: String?
     let maximumOrderAmount: String?
     let baseCurrencyDecimal: Int?
     let counterCurrencyDecimal: Int?
     let presentationDecimal: Int?
     let resellMarket: Bool?
-    let minMultiplier: String?
+    var minMultiplier: String?
     let maxMultiplier: String?
     let listDate: Int?
     let baseCurrencyName: String?
     let counterCurrencyName: String?
     let triggerOrder: TriggerOrder?
-    var isFavorite: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case marketCode = "market_code"

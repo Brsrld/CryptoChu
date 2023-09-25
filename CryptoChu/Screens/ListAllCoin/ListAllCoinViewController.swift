@@ -60,26 +60,22 @@ final class ListAllCoinViewController: UIViewController {
             .sink { [weak self] (state) in
                 switch state {
                 case .idle:
-                    self?.fillData()
+                    self?.viewModel.serviceInit()
                     self?.prepareUI()
                 case .loading:
                     self?.view.activityStartAnimating()
                 case .finished:
                     self?.view.activityStopAnimating()
                     self?.prepareEmptyView(isHidden: true)
-                    self?.coinListTableView.reloadData()
                     self?.viewModel.checkEmptyState()
+                    self?.viewModel.readData()
+                    self?.coinListTableView.reloadData()
                 case .error(error: let error):
                     self?.alert(message: error)
                 case .empty:
                     self?.prepareEmptyView(isHidden: false)
                 }
             }.store(in: &cancellables)
-    }
-    
-    private func fillData() {
-        viewModel.serviceInit()
-        viewModel.readData()
     }
     
     private func prepareUI() {
@@ -151,14 +147,14 @@ extension ListAllCoinViewController: UITableViewDataSource, UITableViewDelegate 
                                                                 viewModel.coinList?.data?.markets?[indexPath.row].baseCurrency,
                                                                counterCurrency: viewModel.coinList?.data?.markets?[indexPath.row].counterCurrency,
                                                                indexPath: indexPath,
-                                                               isFavorite: viewModel.coinList?.data?.markets?[indexPath.row].isFavorite,
+                                                               imageName: viewModel.coinList?.data?.markets?[indexPath.row].minMultiplier,
                                                                delegate: self))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let marketCode = viewModel.coinList?.data?.markets?[indexPath.row].marketCode,
-              let isFavorite = viewModel.coinList?.data?.markets?[indexPath.row].isFavorite else { return }
+              let isFavorite = viewModel.coinList?.data?.markets?[indexPath.row].minMultiplier else { return }
         coordinator.eventOccurred(with: CoinDetailsBuilder.build(coordinator: coordinator, marketCode: marketCode, isFavorite: isFavorite))
     }
 }

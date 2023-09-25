@@ -31,8 +31,10 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
     }
     
     func isFavoriteControl(index: Int) {
-        coinList?.data?.markets?[index].isFavorite?.toggle()
+        let condition = coinList?.data?.markets?[index].minMultiplier == "star.fill"
+        coinList?.data?.markets?[index].minMultiplier = condition ? "star" : "star.fill"
         UserDefaults.standard.set(coinList.encode(), forKey: "coinList")
+        UserDefaults.standard.synchronize()
     }
     
     func searchCoins(text: String) {
@@ -53,7 +55,9 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
         guard let favoriteData = UserDefaults.standard.object(forKey: "coinList") as? Data,
               let favoriteCoins = try? JSONDecoder().decode(MarketInfoModel?.self,
                                                             from: favoriteData) else { return }
+        UserDefaults.standard.synchronize()
         self.coinList = favoriteCoins
+        self.serviceData = favoriteCoins
     }
     
     func checkEmptyState() {

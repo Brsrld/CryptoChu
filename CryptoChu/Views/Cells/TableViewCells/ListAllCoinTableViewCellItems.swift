@@ -18,6 +18,6 @@ struct ListAllCoinTableViewCellItems {
     let baseCurrency: String?
     let counterCurrency: String?
     let indexPath: IndexPath?
-    var isFavorite: Bool?
+    var imageName: String?
     weak var delegate: ListAllCoinTableViewCellOutputProtocol?
 }

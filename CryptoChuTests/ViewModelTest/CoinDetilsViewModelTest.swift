@@ -17,7 +17,7 @@ class CoinDetilsViewModelTest: XCTestCase {
     override func setUp() {
         super.setUp()
         viewModel = CoinDetailsViewModel(marketCode: "Btc",
-                                         isFavorite: true,
+                                         isFavorite: "star",
                                          service: MockHttpClient(filename: filename))
     }
     

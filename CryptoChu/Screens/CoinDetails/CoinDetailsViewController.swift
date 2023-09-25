@@ -9,6 +9,7 @@
 import UIKit
 import Combine
 
+// MARK: - CoinDetailsViewController
 final class CoinDetailsViewController: UIViewController {
     
     private lazy var coinStatusView: UIView = {
@@ -80,6 +81,7 @@ final class CoinDetailsViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - Properties
     private var viewModel: CoinDetailsViewModelProtocol
     private var coordinator: Coordinator
     private var cancellables: Set<AnyCancellable>
@@ -186,7 +188,7 @@ final class CoinDetailsViewController: UIViewController {
     
     private func reSendRequest() {
         DispatchQueue.main.async { [weak self] in
-            self?.timer = Timer.scheduledTimer(withTimeInterval: 6,
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 5,
                                                repeats: false, block: {_ in
                 self?.viewModel.serviceInit()
             })

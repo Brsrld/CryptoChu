@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - RequestError
 enum RequestError: Error {
     case decode
     case invalidURL

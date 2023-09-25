@@ -8,8 +8,10 @@
 import UIKit
 import SnapKit
 
+// MARK: - ListAllCoinTableViewCell
 class ListAllCoinTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
     weak var delegate: ListAllCoinTableViewCellOutputProtocol?
     var indexPath: IndexPath?
     
@@ -39,7 +41,6 @@ class ListAllCoinTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     private func setUpView() {

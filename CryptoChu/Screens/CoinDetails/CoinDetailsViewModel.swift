@@ -18,12 +18,15 @@ protocol CoinDetailsViewModelProtocol {
     func serviceInit()
 }
 
+// MARK: - CoinDetailsViewModel
 final class CoinDetailsViewModel: BaseViewModel<CoinDetailsStates> {
+    // MARK: - Properties
     private let service: CoinDetailsServiceable
     var marketCode: String
     var isFavorite: String
     var coinDetails: TickersInfoModel?
     
+    // MARK: - Functions
     init(marketCode: String,
          isFavorite: String,
          service: CoinDetailsServiceable) {
@@ -48,6 +51,7 @@ final class CoinDetailsViewModel: BaseViewModel<CoinDetailsStates> {
     }
 }
 
+// MARK: - CoinDetailsViewModelProtocol
 extension CoinDetailsViewModel : CoinDetailsViewModelProtocol {
     var statePublisher: Published<CoinDetailsStates>.Publisher {
         $states

@@ -20,12 +20,15 @@ protocol ListAllCoinViewModelProtocol {
     func serviceInit()
 }
 
+// MARK: - ListAllCoinViewModel
 final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
     
+    // MARK: - Properties
     private var service: ListAllCoinServiceable
     private var serviceData: MarketInfoModel?
     var coinList: MarketInfoModel?
     
+    // MARK: - Functions
     init(service: ListAllCoinServiceable) {
         self.service = service
     }
@@ -88,6 +91,7 @@ final class ListAllCoinViewModel: BaseViewModel<ListAllCoinStates> {
     }
 }
 
+// MARK: - ListAllCoinViewModelProtocol
 extension ListAllCoinViewModel: ListAllCoinViewModelProtocol {
     var statePublisher: Published<ListAllCoinStates>.Publisher {
         $states

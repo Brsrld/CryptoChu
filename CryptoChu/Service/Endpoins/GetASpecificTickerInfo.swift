@@ -7,8 +7,8 @@
 
 import Foundation
 
+// MARK: - GetASpecificTickerInfo
 struct GetASpecificTickerInfo: Endpoint {
-    
     var marketCode: String
     
     var path: String {

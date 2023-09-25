@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
+// MARK: Coordinator
 final class Coordinator: CoordinatorProtocol {
-    
     // MARK: Properties
     var parentCoordinator: CoordinatorProtocol?
     var children: [CoordinatorProtocol] = []

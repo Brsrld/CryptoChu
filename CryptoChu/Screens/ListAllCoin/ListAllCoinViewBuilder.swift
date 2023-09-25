@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: - ListAllCoinBuilder
 struct ListAllCoinBuilder {
     static func build(coordinator: Coordinator) -> UIViewController {
         let service: ListAllCoinServiceable = ListAllCoinService()

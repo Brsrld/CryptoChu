@@ -50,7 +50,6 @@
 		557B780B2AC0659F0043D5C8 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */; };
 		557B780E2AC087230043D5C8 /* CoinDetilsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B780D2AC087230043D5C8 /* CoinDetilsViewModelTest.swift */; };
 		557B78102AC0885E0043D5C8 /* TickerInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 557B780F2AC0885E0043D5C8 /* TickerInfo.json */; };
-		55F4267E2ABE0BE100E4C1EC /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +108,6 @@
 		557B780A2AC0659F0043D5C8 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
 		557B780D2AC087230043D5C8 /* CoinDetilsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetilsViewModelTest.swift; sourceTree = "<group>"; };
 		557B780F2AC0885E0043D5C8 /* TickerInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TickerInfo.json; sourceTree = "<group>"; };
-		55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,7 +275,6 @@
 				5543D30B2ABCBB04002E3668 /* UIView+Extension.swift */,
 				5543D30D2ABCBB04002E3668 /* UIViewController+Extension.swift */,
 				556DC1172ABDD1580085D984 /* Encodable+Extension.swift */,
-				55F4267D2ABE0BE100E4C1EC /* Dictionary+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -520,7 +517,6 @@
 				55015D222ABCB02F0048553F /* SceneDelegate.swift in Sources */,
 				556DC1042ABD96DA0085D984 /* ListAllCoinServiceable.swift in Sources */,
 				5543D3032ABCB675002E3668 /* TickersInfoModel.swift in Sources */,
-				55F4267E2ABE0BE100E4C1EC /* Dictionary+Extension.swift in Sources */,
 				5543D2F22ABCB27A002E3668 /* RequestMethods.swift in Sources */,
 				5523E8B72ABCBBB3002F679D /* ListAllCoinViewStates.swift in Sources */,
 				556DC1142ABDB3AE0085D984 /* EmptyView.swift in Sources */,

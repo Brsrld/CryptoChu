@@ -8,6 +8,7 @@
 //
 import Foundation
 
+// MARK: - CoinDetailsStates
 enum CoinDetailsStates: ViewStateProtocol {
     case idle
     case loading

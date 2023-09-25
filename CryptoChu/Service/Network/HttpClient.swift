@@ -7,10 +7,12 @@
 
 import Foundation
 
+// MARK: - HTTPClient
 protocol HTTPClient {
     func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type, urlSession: URLSession?) async -> Result<T, RequestError>
 }
 
+// MARK: - HTTPClient Extension
 extension HTTPClient {
     func sendRequest<T: Decodable>(
         endpoint: Endpoint,

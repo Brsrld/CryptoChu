@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: - CoinDetailsBuilder
 struct CoinDetailsBuilder {
     static func build(coordinator: Coordinator, marketCode: String, isFavorite: String) -> UIViewController {
         let service: CoinDetailsServiceable = CoinDetailsService()

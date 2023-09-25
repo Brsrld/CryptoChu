@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - ListAllMarketInfo
 struct ListAllMarketInfo: Endpoint {
     var path: String {
         return "/api/v1/market_info/"
